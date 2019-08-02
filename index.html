@@ -25,8 +25,10 @@
     <h1 id="orientation">Orientation: </h1>
 <script>
     screen.lockOrientation("portrait");
+    var isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
+    var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     function detectOrientation() {
-        document.getElementById("orientation").innerHTML = window.matchMedia("(orientation: portrait)").matches ? "Orientation: portrait" : "Orientation: landscape";
+        document.getElementById("orientation").innerHTML = window.matchMedia("(orientation: portrait)").matches && isSafari && iOS ? "Orientation: portrait on Safari and iOS" : "Orientation: landscape portrait on Safari and iOS";
     }
 </script>
 </body>
