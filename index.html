@@ -22,9 +22,12 @@
     </style>
 </head>
 <body>
-    <h1>Hola</h1>
+    <h1 id="orientation">Orientation: </h1>
 <script>
     screen.lockOrientation("portrait");
+    window.addEventListener("orientationchange", function() {
+        document.getElementById("orientation").innerText = screen.msOrientation || screen.mozOrientation || (screen.orientation || {}).type;
+    }, false);
 </script>
 </body>
 </html>
