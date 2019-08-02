@@ -24,7 +24,8 @@
 <body onresize="detectOrientation()">
     <h1 id="orientation">Orientation: </h1>
 <script>
-    screen.lockOrientation("portrait");
+    locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock;
+    locOrientation('portrait');
     var isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
     var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     function detectOrientation() {
