@@ -21,13 +21,13 @@
         }
     </style>
 </head>
-<body>
+<body onresize="detectOrientation()">
     <h1 id="orientation">Orientation: </h1>
 <script>
     screen.lockOrientation("portrait");
-    window.addEventListener("orientationchange", function() {
-        document.getElementById("orientation").innerText = screen.msOrientation || screen.mozOrientation || (screen.orientation || {}).type;
-    });
+    function detectOrientation() {
+        document.getElementById("orientation").innerHTML = screen.msOrientation || screen.mozOrientation || (screen.orientation || {}).type;
+    }
 </script>
 </body>
 </html>
