@@ -24,13 +24,10 @@
 <body onresize="detectOrientation()">
     <h1 id="orientation">Orientation: </h1>
 <script>
-    locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock;
-    locOrientation('portrait');
-    var isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
-    var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    function detectOrientation() {
-        document.getElementById("orientation").innerHTML = window.matchMedia("(orientation: portrait)").matches && isSafari && iOS ? "Orientation: portrait on Safari and iOS" : "Orientation: landscape portrait on Safari and iOS";
-    }
+    document.documentElement.requestFullscreen();
+    screen.orientation.lock('portrait').then(null, function(error) {
+        document.exitFullscreen()
+    });
 </script>
 </body>
 </html>
